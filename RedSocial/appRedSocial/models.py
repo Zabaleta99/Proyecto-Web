@@ -29,6 +29,7 @@ class Aficion(models.Model):
 class Usuario(models.Model):
  # Campo para la relación one-to-many
  nombreUsuario = models.CharField( max_length=40, primary_key=True)
+ contraseña = models.CharField( max_length=8, default='contraseña')
  estadoCivil = models.ForeignKey(EstadoCivil, on_delete=models.CASCADE)
  aficiones = models.ManyToManyField(Aficion)
  nombre = models.CharField(max_length=40)

@@ -6,7 +6,7 @@
     <title>Red Social</title>
     {% load static %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300"> 
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">                       
+                   
     <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
     <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
 </head>
@@ -16,22 +16,30 @@
         <div class="tm-main-content">
             <div class="container tm-site-header-container">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
-                        <div class="tm-site-header">
-                            <h1 class="mb-4">RED SOCIAL</h1>
-                            <img src="{% static 'img/underline.png' %}" class="img-fluid mb-4">
-                            <p>La nueva red social para rodearte de la mejor gente con el mejor contenido</p>  
-                                 
-                        </div>     
-
+                    <div class="row">
+                        <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
                     </div>
-                    <ul>
+                    <div>
+                        <h2 class="mb-4">Beer Meet</h2>
+                    </div>
+                    <div>
+                        <form action="{% url 'respuesta' %}" method="post">
+                        {% csrf_token %}
+                        <div><input type="text" name="usuario"></div>
+                        <div><input type="password" name="password"></div>
+                        <div><input type="submit" name="Entrar" value="Entrar"></div>
+                        </form>  
+                        <p>La nueva red social para rodearte de la mejor gente con el mejor contenido</p>    
+                    </div>    
+                 </div> 
+                 <div>
+                     <ul>
                       <li><span>Entrar</span></li>
                       <li><span><a class="hiper" href="https://www.instagram.com">Instagram</a></span></li>
                       <li><span><a class="hiper" href="https://www.twitter.com">Twitter</a></span></li>
                       <li><span><a class="hiper" href="https://www.youtube.com">Youtube</a></li></span></li>
                     </ul> 
-                 </div>        
+                 </div>       
             </div>
             <footer>
                 <p class="small tm-copyright-text">Copyright &copy; <span class="tm-current-year">2020</span> Red Social. Layout: Tooplate</p>
