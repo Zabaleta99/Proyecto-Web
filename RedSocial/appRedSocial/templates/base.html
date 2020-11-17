@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block styles %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="tm-bg"></div>
+    <div id="tm-wrap">
+        <div class="tm-main-content">
+          <div class="container tm-site-header-container">
+            {% block content %}{% endblock %}
+          </div>
+          <footer>
+              <p class="small tm-copyright-text">Copyright &copy; <span class="tm-current-year">2020</span> Red Social. Layout: Tooplate</p>
+          </footer>
+        </div>
+    </div>
+</body>
+</html>

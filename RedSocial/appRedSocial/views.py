@@ -5,9 +5,9 @@ from .models import Aficion, Usuario, Post
 
 #devuelve la lista de los Usuarios registrados
 def show_login(request):
-	return render(request, 'index.html')
+	return render(request, 'login.html')
 
-def post_formulario(request):
+def inicio(request):
 	usuario = request.POST["usuario"]
 	password = request.POST["password"]
 
@@ -15,9 +15,10 @@ def post_formulario(request):
 	for usu in usuariosaVerificar:
 		if (usu.nombreUsuario == usuario):
 			if(usu.contraseña == password ):
-				return render(request, 'login.html')
+				posts = Post.objects.order_by('fecha_publicacion')
+				context = {'lista_posts': posts }
+				return render(request, 'inicio.html', context)
 			else:
-				return render(request, 'index.html')
+				return render(request, 'login.html')
 		else:
-			return render(request, 'index.html')
-	
+			return render(request, 'login.html')
