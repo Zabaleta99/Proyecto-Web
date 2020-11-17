@@ -38,8 +38,9 @@ class Usuario(models.Model):
  telefono = models.IntegerField(default=0)
  fecha_nacimiento = models.DateField()
  ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
- fotoPerfil = models.ImageField(upload_to='imagenes/',blank=True, null=True)
+ fotoPerfil = models.ImageField(upload_to='appRedSocial/static/img',blank=True, null=True)
  descripcion = models.CharField(max_length=250)
+ email = models.EmailField(max_length = 100)
 
  def __str__(self):
         return self.nombreUsuario
@@ -63,6 +64,7 @@ class Post(models.Model):
  hora = models.DateTimeField(auto_now_add=True, blank=True)
  texto = models.CharField(max_length=500)
  likes = models.IntegerField(default=0)
+ foto = models.ImageField(upload_to='appRedSocial/static/img',blank=True, null=True)
  
  def __str__(self):
         return self.titulo

@@ -1,54 +1,9 @@
-/*
 
-Template 2097 Pop
-
-http://www.tooplate.com/view/2097-pop
-
-*/
-
-body {
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	font-size: 19px;
-	font-weight: 300;
-    color:white;        
-    position: relative;
-}
-
-h1 { font-size: 2.8rem; 
-}
-h2 { 
-    font-size: 2.3rem; 
+h1 {  
+    font-size: 1.5rem; 
+    text-align: center;
     font-style: italic;
     font-family: sans-serif;
-}
-
-#tm-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;  
-    background-image: url(../img/pop-bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-#tm-bg:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#tm-wrap {
-    align-items: center;
-    height: 100%;
 }
 
 p {
@@ -56,172 +11,118 @@ p {
     letter-spacing: 1px;
 }
 
-.tm-main-content {
-   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
+body {
+    background: url(../img/pop-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Roboto;
 }
 
+.contenedor-form {
+    background: rgba(0,0,0,.7);
+    max-width: 470px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
 
+}
 
-/* Footer */
-footer {
+.contenedor-form .toggle {
     position: absolute;
-    bottom: 30px;    
+    top: 7px;
+    right: 7px;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 25px;
     text-align: center;
-    left: 0;
-    right: 0;   
-}
-
-.tm-text-highlight { color: white; }
-.tm-text-highlight:hover { color: red; }
-.tm-main-content.tm-footer-relative { flex-direction: column; } 
-.tm-main-content.tm-footer-relative footer {
-    position: relative;
-    bottom: 0;
-    margin-top: 50px;
-}
-
-.tm-copyright-text {
-    background-color: rgba(0,0,0,0.6);
-    display: inline-block;
-    padding: 10px 30px;
-}
-
-a, button { transition: all 0.3s ease; }
-a:hover,
-a:focus {
-	text-decoration: none;
-	outline: none;
-}
-
-p:last-child { margin-bottom: 0; }
-
-@media (min-width: 900px) {
-    .container { max-width: 900px; }
-}
-
-@media (min-width: 767px) and (max-width: 991px), (max-width: 440px) {
-    .tm-nav-link {
-        width: 145px;
-        height: 145px;
-    }
-}
-
-@media (max-width: 767px) {
-    .container { max-width: 450px; }
-    .content {
-        margin-left: auto;
-        margin-right: 0;
-    }
-    .tm-nav ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-    .grid { justify-content: flex-end; }
-    .tm-col-email { padding-left: 15px; }
-    .tm-reverse-sm { flex-direction: column-reverse; }
-}
-
-@media (max-width: 544px) {    
-    .tm-main-content { flex-direction: column; }
-    .details__bg { padding: 55px 40px; }
-    .slick-dots li button:before { font-size: 15px; }
-
-    footer {
-        position: relative;
-        bottom: 0;
-    }
-}
-
-@media (max-width: 419px) {
-    .tm-nav-link {
-        width: 120px;
-        height: 120px;
-    }
-
-    .fa-3x { font-size: 2.2em; }
-}
-
-
-#pure-button
-{
-    background: #99ccff;
-    color: white;
-    
-}
-
-
-ul {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    list-style-type: none;
-    display:inline;
-}
-
-li {
-    font-size: 25px;
-    width: 6em;
-    height: 1.24em;
-    color: orange;
-    border-left: 0.08em solid;
-    position: relative;
-    margin-top: 0.8em;
+    border-top: 2px solid #ff851b;
+    border-bottom: 2px solid #ff851b;
     cursor: pointer;
-    float: left;
+    transition: all .5s ease;
 }
 
-li::before,
-li::after
- {
-    content: '';
-    position: absolute;
-    width: inherit;
-    border-left: inherit;
-    z-index: -1;
+.contenedor-form .toggle:hover {
+    border-top: 2px solid #0075d9;
+    border-bottom: 2px solid #0075d9;
 }
 
-li::before {
-    height: 80%;
-    top: 10%;
-    left: calc(-0.15em - 0.08em * 2);
-    filter: brightness(0.8);
-    float: left;
+.contenedor-form .toggle span {
+    letter-spacing: 1px;
 }
 
-li::after {
-    height: 60%;
-    top: 20%;
-    left: calc(-0.15em * 2 - 0.08em * 3);
-    filter: brightness(0.6);
-    float: left;
+.contenedor-form h2 {
+    margin: 0 0 28px 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
 }
-
-li span {
-    position: relative;
-    height: 120%;
-    top: -10%;
+.contenedor-form input[type="text"],
+.contenedor-form input[type="password"],
+.contenedor-form input[type="email"] {
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0 0 20px 0;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 4px solid #ff851b;
     box-sizing: border-box;
-    border: 0.08em solid;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    text-transform: capitalize;
-    transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
-    transition: 0.3s;float: left;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight:normal;
+    transition: all .5s ease;
 }
 
-li:hover span {
-    transform: translateX(0.15em);
+.contenedor-form input[type="text"]:focus,
+.contenedor-form input[type="password"]:focus,
+.contenedor-form input[type="email"]:focus {
+    border-bottom: 4px solid #0075d9;
 }
 
-.hiper {
-    color: orange;
+.contenedor-form input[type="submit"] {
+    background: #FF851B;
+    color: #FFF;
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: Roboto;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.contenedor-form input[type="submit"]:hover {
+    background: rgba(0, 117, 217, 0.7);
+}
+
+.contenedor-form .reset-password {
+    background: rgba(0, 117, 217, .7);
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.contenedor-form .reset-password a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contenedor-form .formulario {
+    display: none;
+    padding: 40px;
+}
+
+.contenedor-form .formulario:nth-child(2) {
+    display: block;
 }

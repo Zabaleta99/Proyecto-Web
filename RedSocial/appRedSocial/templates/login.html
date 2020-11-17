@@ -2,37 +2,47 @@
 
 {% block styles %}
 {% load static %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
-<link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">           
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
 {% endblock %}
 
-{% block title %}Red Social{% endblock %}
+{% block title %}Beer Meet: Inicio{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="row">
-      {% load static %}
-      <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
+	<div id="tm-bg">
+        <div class="contenedor-form">
+            <div class="toggle">
+                <span> Crear Cuenta</span>
+            </div>
+            
+            <div class="formulario">
+                <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
+                <h1>Beer Meet</h1>
+                <form action="{% url 'inicio' %}" method="post">
+	               
+	                <div><input type="text" name="usuario" placeholder="Usuario" required></div>
+	                <div><input type="password" name="password" placeholder="Contraseña" required></div>
+	                <div><input type="submit" name="Entrar" value="Entrar"></div>
+	            </form>  
+	             <p>La nueva red social para rodearte de la mejor gente</p>       
+            </div>
+            
+            <div class="formulario">
+                <h2>Crea tu Cuenta</h2>
+                <form action="{% url 'inicio' %}" method="post">
+                	{% csrf_token %}
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="email" name="correo" placeholder="Correo Electronico" required> 
+                    <input type="text" name="telefono"placeholder="Teléfono" required>
+                    <input type="submit" value="Registrarse">
+                </form>
+            </div>
+            <div class="reset-password">
+                <a href="#">Olvide mi Contraseña?</a>
+            </div>
+        </div>
     </div>
-    <div>
-        <h2 class="mb-4">Beer Meet</h2>
-    </div>
-    <div>
-        <form action="{% url 'inicio' %}" method="post">
-        {% csrf_token %}
-        <div><input type="text" name="usuario"></div>
-        <div><input type="password" name="password"></div>
-        <div><input type="submit" name="Entrar" value="Entrar"></div>
-        </form>
-        <p class='a'>La nueva red social para rodearte de la mejor gente con el mejor contenido</p>
-    </div>
- </div>
- <div>
-     <ul>
-      <li><span>Entrar</span></li>
-      <li><span><a class="hiper" href="https://www.instagram.com">Instagram</a></span></li>
-      <li><span><a class="hiper" href="https://www.twitter.com">Twitter</a></span></li>
-      <li><span><a class="hiper" href="https://www.youtube.com">Youtube</a></li></span></li>
-    </ul>
- </div>
+   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>    
+   <script src="{% static 'js/principal.js' %}"></script> 
 {% endblock %}
