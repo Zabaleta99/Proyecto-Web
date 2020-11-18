@@ -15,7 +15,7 @@
               <div class="container">
                 <div class="bloque-titulo">
                   <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <h2 class="a">Welcome {{usuario.nombreUsuario}}</h2>
+                    <h2 class="a">Welcome <a href="{% url 'perfil' usuario.nombreUsuario %}">{{usuario.nombreUsuario}}</a></h2>
                     <p>Here are the recent posts of the users you follow</p>
                   </div>
                 </div>
@@ -30,6 +30,7 @@
                         <span class="posted_on">{{post.fecha_publicacion}}</span>
                         <h3><a href="#">{{post.titulo}}</a></h3>
                         <p>{{post.texto|truncatewords:20}}</p>
+                        <span>by <a href="{% url 'perfil' post.autor.nombreUsuario %}">{{post.autor}}</a></span>
                         <ul class="stuff">
                           <li><i class="icon-heart2"></i>{{post.likes}}</li>
                           <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->

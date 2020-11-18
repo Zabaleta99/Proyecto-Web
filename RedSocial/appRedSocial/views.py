@@ -58,8 +58,8 @@ def inicio(request):
 	return render(request, 'login.html')
 
 
-def perfil(request):
-	usuario = get_object_or_404(Usuario, pk='Aritz_era')
+def perfil(request, username):
+	usuario = get_object_or_404(Usuario, pk=username)
 	context = {'usuario': usuario}
 	return render(request, 'perfil.html', context)
 
