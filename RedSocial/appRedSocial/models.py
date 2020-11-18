@@ -22,7 +22,7 @@ class Aficion(models.Model):
  # No es necesario crear un campo para la Primary Key, Django creará automáticamente un IntegerField.
  nombreAficion = models.CharField(max_length=50)
  edadMedia = models.DecimalField(max_digits=4, decimal_places=2)
- estimacionSeguidores = models.IntegerField(default=0) 
+ estimacionSeguidores = models.IntegerField(default=0)
  def __str__(self):
         return self.nombreAficion
 
@@ -38,7 +38,7 @@ class Usuario(models.Model):
  telefono = models.IntegerField(default=0)
  fecha_nacimiento = models.DateField()
  ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
- fotoPerfil = models.ImageField(upload_to='appRedSocial/static/img',blank=True, null=True)
+ fotoPerfil = models.ImageField(upload_to='img/',blank=True, null=True)
  descripcion = models.CharField(max_length=250)
  email = models.EmailField(max_length = 100)
 
@@ -49,7 +49,7 @@ class Usuario(models.Model):
 class Seguidores(models.Model):
 	nombreUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'Seguidor')
 	seguidores = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'friends')
- 
+
 
 class Seguidos(models.Model):
 	nombreUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'Seguido')
@@ -59,13 +59,12 @@ class Seguidos(models.Model):
 class Post(models.Model):
  # No es necesario crear un campo para la Primary Key, Django creará automáticamente un IntegerField.
  titulo = models.CharField(max_length=50)
- nombreUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
- fecha_publicacion = models.DateField()
- hora = models.DateTimeField(auto_now_add=True, blank=True)
+ autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+ fecha_publicacion = models.DateTimeField(auto_now_add=True)
  texto = models.CharField(max_length=500)
  likes = models.IntegerField(default=0)
- foto = models.ImageField(upload_to='appRedSocial/static/img',blank=True, null=True)
- 
+ foto = models.ImageField(upload_to='img/',blank=True, null=True)
+
  def __str__(self):
         return self.titulo
 
@@ -77,6 +76,6 @@ class Comentario(models.Model):
  fecha_publicacion = models.DateField()
  texto = models.CharField(max_length=500)
  likes = models.IntegerField(default=0)
- 
+
  def __str__(self):
         return self.titulo

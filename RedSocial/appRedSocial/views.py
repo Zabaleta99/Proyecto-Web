@@ -22,6 +22,7 @@ def inicio(request):
 	fotoPerfil = 'fotoPerfil' in request.POST and request.POST['fotoPerfil']
 
 	usuariosaVerificar =  get_list_or_404(Usuario.objects.all())
+	#Estas de abajo para que??
 	aficiones =  get_list_or_404(Aficion.objects.all())
 	estadoCivil =  get_list_or_404(EstadoCivil.objects.all())
 	ciudad =  get_list_or_404(Ciudad.objects.all())
@@ -31,8 +32,9 @@ def inicio(request):
 	for usu in usuariosaVerificar:
 		if (usu.nombreUsuario == usuario):
 			if(usu.contraseña == password):
-				posts = Post.objects.order_by('fecha_publicacion')
-				context = {'lista_posts': posts }
+				usuario_logeado = Usuario.objects.get(pk=usuario)
+				posts = Post.objects.order_by('-fecha_publicacion')
+				context = {'lista_posts': posts, 'usuario': usuario_logeado}
 				return render(request, 'inicio.html', context)
 
 	if correo is not False:
@@ -45,12 +47,13 @@ def inicio(request):
 		p.telefono= telefono
 		p.fecha_nacimiento = fecha_nacimiento
 		p.descripcion = descripcion
-		p.estadoCivil = estadoCivil[0]
-		p.ciudad = ciudad[0]
+		p.estadoCivil = estadoCivil[0] #¿¿Solo se comprueba el primer estado civil??!
+		p.ciudad = ciudad[0] #¿¿Solo se comprueba la primer ciudad??!
 		p.fotoPerfil = fotoPerfil
+		#Aficiones no se meten??
 		p.save()
 		posts = Post.objects.order_by('fecha_publicacion')
-		context = {'lista_posts': posts }
+		context = {'lista_posts': posts, 'usuario': p}
 		return render(request, 'inicio.html', context)
 	return render(request, 'login.html')
 
@@ -75,4 +78,3 @@ def estadoCivil(request, estadoCivil_id):
 	estadoCivil = get_object_or_404(EstadoCivil, pk=estadoCivil_id)
 	context = {'estadoCivil': estadoCivil }
 	return render(request, 'estadoCivil.html', context)
-	
