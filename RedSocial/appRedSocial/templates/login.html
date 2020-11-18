@@ -19,7 +19,7 @@
                 <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
                 <h1>Beer Meet</h1>
                 <form action="{% url 'inicio' %}" method="post">
-                    {% csrf_token %}
+	               {% csrf_token %}
 	                <div><input type="text" name="usuario" placeholder="Usuario" required></div>
 	                <div><input type="password" name="password" placeholder="Contraseña" required></div>
 	                <div><input type="submit" name="Entrar" value="Entrar"></div>
@@ -31,10 +31,17 @@
                 <h2>Crea tu Cuenta</h2>
                 <form action="{% url 'inicio' %}" method="post">
                 	{% csrf_token %}
-                    <input type="text" name="usuario" placeholder="Usuario" required>
-                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="text" name="usuario1" placeholder="Usuario" required>
+                    <input type="password" name="password1" placeholder="Contraseña" required>
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="text" name="apellidoUno" placeholder="Primer Apellido" required>
+                    <input type="text" name="apellidoDos" placeholder="Segundo Apellido" required>
                     <input type="email" name="correo" placeholder="Correo Electronico" required> 
-                    <input type="text" name="telefono"placeholder="Teléfono" required>
+                    <input type="checkbox" name="loco"placeholder="Aficiones" required>
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required>
+                    <input type="text" name="descripcion" placeholder="Decripción Personal" required>
+                    <input type="file" name="fotoPerfil" placeholder="Foto de Perfil" required>
                     <input type="submit" value="Registrarse">
                 </form>
             </div>

@@ -1,35 +1,64 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
-from .models import Aficion, Usuario, Post, Ciudad, Aficion, EstadoCivil
+from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil
 
 #devuelve la lista de los Usuarios registrados
 def show_login(request):
 	return render(request, 'login.html')
 
 def inicio(request):
-	usuario = request.POST["usuario"]
-	password = request.POST["password"]
+	usuario = 'usuario' in request.POST and request.POST['usuario']
+	password = 'password' in request.POST and request.POST['password']
+	usuario1 = 'usuario1' in request.POST and request.POST['usuario1']
+	password1 = 'password1' in request.POST and request.POST['password1']
+	nombre = 'nombre' in request.POST and request.POST['nombre']
+	apellidoUno = 'apellidoUno' in request.POST and request.POST['apellidoUno']
+	apellidoDos = 'apellidoDos' in request.POST and request.POST['apellidoDos']
+	correo = 'correo' in request.POST and request.POST['correo']
+	telefono = 'telefono' in request.POST and request.POST['telefono']
+	fecha_nacimiento = 'fecha_nacimiento' in request.POST and request.POST['fecha_nacimiento']
+	descripcion = 'descripcion' in request.POST and request.POST['descripcion']
+	fotoPerfil = 'fotoPerfil' in request.POST and request.POST['fotoPerfil']
 
-	usuariosaVerificar =  get_list_or_404(Usuario.objects.order_by('nombreUsuario'))
+	usuariosaVerificar =  get_list_or_404(Usuario.objects.all())
+	aficiones =  get_list_or_404(Aficion.objects.all())
+	estadoCivil =  get_list_or_404(EstadoCivil.objects.all())
+	ciudad =  get_list_or_404(Ciudad.objects.all())
+
+	p = Usuario()
+
 	for usu in usuariosaVerificar:
 		if (usu.nombreUsuario == usuario):
-			if(usu.contraseña == password ):
+			if(usu.contraseña == password):
 				posts = Post.objects.order_by('fecha_publicacion')
 				context = {'lista_posts': posts }
 				return render(request, 'inicio.html', context)
-			else:
-				return render(request, 'login.html')
-		else:
-			return render(request, 'login.html')
+
+	if correo is not False:
+		p.nombreUsuario = usuario1
+		p.contraseña = password1
+		p.nombre = nombre
+		p.apellidoUno = apellidoUno
+		p.apellidoDos = apellidoDos
+		p.email = correo
+		p.telefono= telefono
+		p.fecha_nacimiento = fecha_nacimiento
+		p.descripcion = descripcion
+		p.estadoCivil = estadoCivil[0]
+		p.ciudad = ciudad[0]
+		p.fotoPerfil = fotoPerfil
+		p.save()
+		posts = Post.objects.order_by('fecha_publicacion')
+		context = {'lista_posts': posts }
+		return render(request, 'inicio.html', context)
+	return render(request, 'login.html')
+
 
 def perfil(request):
 	usuario = get_object_or_404(Usuario, pk='Aritz_era')
 	context = {'usuario': usuario}
 	return render(request, 'perfil.html', context)
-
-
-
 
 
 def ciudad(request, ciudad_id):
