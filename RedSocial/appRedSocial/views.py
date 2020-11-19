@@ -19,10 +19,9 @@ def inicio(request):
 	telefono = 'telefono' in request.POST and request.POST['telefono']
 	fecha_nacimiento = 'fecha_nacimiento' in request.POST and request.POST['fecha_nacimiento']
 	descripcion = 'descripcion' in request.POST and request.POST['descripcion']
-	fotoPerfil = 'fotoPerfil' in request.POST and request.POST['fotoPerfil']
+	fotoPerfil = 'fotoPerfil' in request.FILES and request.FILES['fotoPerfil']
 
 	usuariosaVerificar =  get_list_or_404(Usuario.objects.all())
-	#Estas de abajo para que??
 	aficiones =  get_list_or_404(Aficion.objects.all())
 	estadoCivil =  get_list_or_404(EstadoCivil.objects.all())
 	ciudad =  get_list_or_404(Ciudad.objects.all())
@@ -47,12 +46,12 @@ def inicio(request):
 		p.telefono= telefono
 		p.fecha_nacimiento = fecha_nacimiento
 		p.descripcion = descripcion
-		p.estadoCivil = estadoCivil[0] #¿¿Solo se comprueba el primer estado civil??!
-		p.ciudad = ciudad[0] #¿¿Solo se comprueba la primer ciudad??!
+		p.estadoCivil = estadoCivil[0]
+		p.ciudad = ciudad[0]
 		p.fotoPerfil = fotoPerfil
-		#Aficiones no se meten??
+
 		p.save()
-		posts = Post.objects.order_by('fecha_publicacion')
+		posts = Post.objects.order_by('-fecha_publicacion')
 		context = {'lista_posts': posts, 'usuario': p}
 		return render(request, 'inicio.html', context)
 	return render(request, 'login.html')
@@ -60,7 +59,8 @@ def inicio(request):
 
 def perfil(request, username):
 	usuario = get_object_or_404(Usuario, pk=username)
-	context = {'usuario': usuario}
+	aficiones = usuario.aficiones.all()
+	context = {'usuario': usuario, 'aficiones': aficiones}
 	return render(request, 'perfil.html', context)
 
 

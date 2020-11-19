@@ -13,7 +13,6 @@
 {% block content %}
 
 	{% if usuario %}
-	    
 			<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
 				<div class="overlay"></div>
 				<div class="container">
@@ -21,7 +20,8 @@
 						<div class="col-md-8 col-md-offset-2 text-center">
 							<div class="display-t js-fullheight">
 								<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-									<div class="profile-thumb" style="background: url(images/user-3.jpg);"></div>
+									{% load static %}
+									<div class="profile-thumb" style="background: url({% static usuario.fotoPerfil.name %});"></div>
 									<h1><span>{{usuario.nombre}} {{usuario.apellidoUno}} {{usuario.apellidoDos}}</span></h1>
 									<h3><span>{{usuario.descripcion}}</span></h3>
 									<p>
@@ -58,7 +58,7 @@
 									{% for aficion in aficiones %}
 			                            <ul>
 			                            	<li>
-			                            		<a href="{% url 'aficiones' aficion.id%}">{{aficion.nombreAficion}}</a>
+			                            		<a href="{% url 'aficion' aficion.id%}">{{aficion.nombreAficion}}</a>
 			                            	</li>
 			                            </ul>
 			                         {% endfor %}
@@ -81,6 +81,6 @@
 					</div>
 				</div>
 			</div>
-		
-	{% endif %} 
-{% endblock %}  
+
+	{% endif %}
+{% endblock %}

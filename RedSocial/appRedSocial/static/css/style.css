@@ -339,13 +339,13 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 40%;
   display: inline-block;
   float: left;
-  color: #000;
+  color: orange;
   font-weight: bold;
 }
 .info li .second-block {
   width: 60%;
   display: inline-block;
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .fh5co-social-icons {
@@ -405,6 +405,15 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-about .fh5co-social-icons li a:hover {
   background: #FF9000;
 }
+
+#fh5co-about h2 {
+  color: white;
+}
+
+#fh5co-about p {
+  color: white;
+}
+
 
 .fh5co-heading {
   margin-bottom: 5em;

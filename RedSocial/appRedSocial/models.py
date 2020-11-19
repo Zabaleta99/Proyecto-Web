@@ -15,6 +15,7 @@ class Ciudad(models.Model):
  provincia = models.CharField(max_length=40)
  comunidad = models.CharField(max_length=40)
  pais = models.CharField(max_length=40)
+ foto = models.ImageField(upload_to='img/', null=True, blank=True)
  def __str__(self):
         return self.nombreCiudad
 
@@ -23,6 +24,7 @@ class Aficion(models.Model):
  nombreAficion = models.CharField(max_length=50)
  edadMedia = models.DecimalField(max_digits=4, decimal_places=2)
  estimacionSeguidores = models.IntegerField(default=0)
+ foto = models.ImageField(upload_to='img/', null=True, blank=True)
  def __str__(self):
         return self.nombreAficion
 
@@ -31,7 +33,7 @@ class Usuario(models.Model):
  nombreUsuario = models.CharField( max_length=40, primary_key=True)
  contraseña = models.CharField( max_length=8, default='contraseña')
  estadoCivil = models.ForeignKey(EstadoCivil, on_delete=models.CASCADE)
- aficiones = models.ManyToManyField(Aficion, default=1)
+ aficiones = models.ManyToManyField(Aficion, default=[0])#null=False, blank=False
  nombre = models.CharField(max_length=40)
  apellidoUno = models.CharField(max_length=40)
  apellidoDos = models.CharField(max_length=40)
@@ -40,6 +42,7 @@ class Usuario(models.Model):
  ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
  fotoPerfil = models.ImageField(upload_to='img/',blank=True, null=True)
  descripcion = models.CharField(max_length=250)
+ sobreMi = models.TextField(null=True, blank=True)
  email = models.EmailField(max_length = 100)
 
  def __str__(self):

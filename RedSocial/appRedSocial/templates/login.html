@@ -2,8 +2,8 @@
 
 {% block styles %}
 {% load static %}
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">           
-    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
+  <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
 {% endblock %}
 
 {% block title %}Beer Meet: Inicio{% endblock %}
@@ -12,9 +12,9 @@
 	<div id="tm-bg">
         <div class="contenedor-form">
             <div class="toggle">
-                <span> Crear Cuenta</span>
+                <span>Crear Cuenta</span>
             </div>
-            
+
             <div class="formulario">
                 <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
                 <h1>Beer Meet</h1>
@@ -23,20 +23,20 @@
 	                <div><input type="text" name="usuario" placeholder="Usuario" required></div>
 	                <div><input type="password" name="password" placeholder="Contraseña" required></div>
 	                <div><input type="submit" name="Entrar" value="Entrar"></div>
-	            </form>  
-	             <p>La nueva red social para rodearte de la mejor gente</p>       
+	            </form>
+	             <p>La nueva red social para rodearte de la mejor gente</p>
             </div>
-            
+
             <div class="formulario">
                 <h2>Crea tu Cuenta</h2>
-                <form action="{% url 'inicio' %}" method="post">
+                <form action="{% url 'inicio' %}" method="post" enctype="multipart/form-data">
                 	{% csrf_token %}
                     <input type="text" name="usuario1" placeholder="Usuario" required>
                     <input type="password" name="password1" placeholder="Contraseña" required>
                     <input type="text" name="nombre" placeholder="Nombre" required>
                     <input type="text" name="apellidoUno" placeholder="Primer Apellido" required>
                     <input type="text" name="apellidoDos" placeholder="Segundo Apellido" required>
-                    <input type="email" name="correo" placeholder="Correo Electronico" required> 
+                    <input type="email" name="correo" placeholder="Correo Electronico" required>
                     <input type="checkbox" name="loco"placeholder="Aficiones" required>
                     <input type="tel" name="telefono" placeholder="Teléfono" required>
                     <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required>
@@ -50,6 +50,6 @@
             </div>
         </div>
     </div>
-   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>    
-   <script src="{% static 'js/principal.js' %}"></script> 
+   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+   <script src="{% static 'js/principal.js' %}"></script>
 {% endblock %}
