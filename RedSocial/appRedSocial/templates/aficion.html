@@ -12,45 +12,33 @@
 
 {% block content %}
 <div id="page">
-<div id="fh5co-about" class="animate-box">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-				<h2>{{ aficion.nombreAficion }}</h2>
+	<div id="fh5co-about" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading nn">
+					<h2>{{ aficion.nombreAficion }}</h2>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<ul class="info">
-					<li><span class="first-block">Edad media de la afición:</span><span class="second-block">{{ aficion.edadMedia }}</span></li>
-					<li><span class="first-block">Estimación del número de seguidores de la afición:</span><span class="second-block">{{ aficion.estimacionSeguidores }}</span></li>
-				</ul>
+			<div class="row">
+				<div class="col-md-4-b">
+					<ul class="info">
+						<li><span class="first-block">Edad media:</span><span class="second-block">{{ aficion.edadMedia }}</span></li>
+						<li><span class="first-block">Seguidores:</span><span class="second-block">{{ aficion.estimacionSeguidores }}</span></li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<img class="borderedpicture escalaGrises" src="{% static aficion.foto.name %}" alt=""/>
+				</div>
 			</div>
 			<div class="col-md-8">
-					<ul class="fh5co-social-icons">
-						<li><a href="#"><i class="icon-twitter2"></i></a></li>
-						<li><a href="#"><i class="icon-facebook3"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-						<li><a href="#"><i class="icon-dribbble2"></i></a></li>
-					</ul>
-				</p>
+				<ul class="fh5co-social-icons">
+					<li><a href="#"><i class="icon-twitter2"></i></a></li>
+					<li><a href="#"><i class="icon-facebook3"></i></a></li>
+					<li><a href="#"><i class="icon-linkedin2"></i></a></li>
+					<li><a href="#"><i class="icon-dribbble2"></i></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-<div id="fh5co-footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<p>&copy; 2017 Free HTML5 Template. All Rights Reserved. <br>Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="gototop js-top">
-	<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
 </div>
 {% endblock %}

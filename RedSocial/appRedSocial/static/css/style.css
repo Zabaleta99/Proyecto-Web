@@ -1303,3 +1303,26 @@ input[type="text"] {
 .row {
   padding-top: 30px;
 }
+
+
+.borderedpicture {
+background-color: #7d7d7d;
+display: block;
+width: 100%;
+max-width: 100%;
+height: auto;
+size: cover;
+padding: 3% 0 3% 0;
+margin: 1% 0 1% 0;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contenedor:hover .borderedpicture {-webkit-transform:scale(1.5);transform:scale(1.5);}
+.contenedor {overflow:hidden;}
+
+.escalaGrises:hover {filter: grayscale(80%);}
+
+.nn {
+  background-color: orange;
+  padding-top: 15px;
+}

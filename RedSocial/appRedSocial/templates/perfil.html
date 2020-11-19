@@ -51,9 +51,9 @@
 							<ul class="info">
 								<li><span class="first-block">Nombre:</span><span class="second-block">{{usuario.nombre}} {{usuario.apellidoUno}} {{usuario.apellidoDos}}</span></li>
 								<li><span class="first-block">Telefono:</span><span class="second-block">{{usuario.telefono}}</span></li>
-								<li><span class="first-block">Ciudad:</span><span class="second-block">{{usuario.ciudad}}</span></li>
+								<li><span class="first-block">Ciudad:</span><span class="second-block"><a href="{% url 'ciudad' usuario.ciudad.id%}">{{usuario.ciudad}}</a></span></li>
 								<li><span class="first-block">Fecha de Nacimiento:</span><span class="second-block">{{usuario.fecha_nacimiento}}</span></li>
-								<li><span class="first-block">Estado Civil:</span><span class="second-block">{{usuario.estadoCivil}}</span></li>
+								<li><span class="first-block">Estado Civil:</span><span class="second-block"><a href="{% url 'estadoCivil' usuario.estadoCivil.id%}">{{usuario.estadoCivil}}</a></span></li>
 								<li><span class="first-block">Aficiones:</span><span class="second-block">
 									{% for aficion in aficiones %}
 			                            <ul>
