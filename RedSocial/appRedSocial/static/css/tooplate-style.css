@@ -16,6 +16,10 @@ body {
     background-size: cover;
     background-attachment: fixed;
     font-family: Roboto;
+    list-style: none;
+}
+ul {
+    list-style: none;
 }
 
 .contenedor-form {
@@ -26,6 +30,7 @@ body {
     border-radius: 5px;
     color: #fff;
     position: relative;
+    list-style: none;
 
 }
 
@@ -42,6 +47,7 @@ body {
     border-bottom: 2px solid #ff851b;
     cursor: pointer;
     transition: all .5s ease;
+    list-style: none;
 }
 
 .contenedor-form .toggle:hover {
@@ -58,6 +64,7 @@ body {
     font-size: 20px;
     font-weight: 400;
     line-height: 1;
+    list-style: none;
 }
 .contenedor-form input[type="text"],
 .contenedor-form input[type="password"],
@@ -77,6 +84,7 @@ body {
     font-size: 14px;
     font-weight:normal;
     transition: all .5s ease;
+    list-style: none;
 }
 
 .contenedor-form input[type="text"]:focus,
@@ -97,6 +105,7 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     transition: all .5s ease;
+    list-style: none;
 }
 
 .contenedor-form input[type="submit"]:hover {
@@ -121,8 +130,14 @@ body {
 .contenedor-form .formulario {
     display: none;
     padding: 40px;
+    list-style: none;
+}
+
+.contenedor-form .formulario  ul{
+    list-style: none;
 }
 
 .contenedor-form .formulario:nth-child(2) {
     display: block;
+    list-style: none;
 }
