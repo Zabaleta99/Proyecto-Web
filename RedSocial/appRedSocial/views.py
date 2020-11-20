@@ -28,15 +28,15 @@ def inicio(request):
 	fotoPerfil = 'fotoPerfil' in request.FILES and request.FILES['fotoPerfil']
 	if('ciudad' in request.POST):
 		ciudadSelecionada = request.POST['ciudad']
+		ciudad =  get_list_or_404(Ciudad, nombreCiudad=ciudadSelecionada)
 	if('estadoCivil' in request.POST):
 		estadoCivilSelecionado = request.POST['estadoCivil']
+		estadoCivil =  get_list_or_404(EstadoCivil, nombreEstadoCivil=estadoCivilSelecionado)
 	if('aficiones' in request.POST):
 		aficionesSelecionados = request.POST['aficiones']
+		aficiones =  get_list_or_404(Aficion, nombreAficion=aficionesSelecionados)
 	
 	p = Usuario()
-	ciudad =  get_list_or_404(Ciudad, nombreCiudad=ciudadSelecionada)
-	estadoCivil =  get_list_or_404(EstadoCivil, nombreEstadoCivil=estadoCivilSelecionado)
-	aficiones =  get_list_or_404(Aficion, nombreAficion=aficionesSelecionados)
 	usuariosaVerificar = get_list_or_404(Usuario.objects.all())
 
 	for usu in usuariosaVerificar:
