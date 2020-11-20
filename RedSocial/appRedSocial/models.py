@@ -44,6 +44,7 @@ class Usuario(models.Model):
  descripcion = models.CharField(max_length=250)
  sobreMi = models.TextField(null=True, blank=True)
  email = models.EmailField(max_length = 100)
+ fotoDescripcion = models.ImageField(upload_to='img/', null=True, blank=True)
 
  def __str__(self):
         return self.nombreUsuario

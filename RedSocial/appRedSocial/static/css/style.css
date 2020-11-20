@@ -408,6 +408,8 @@ h1, h2, h3, h4, h5, h6, figure {
 
 #fh5co-about h2 {
   color: white;
+  text-transform: uppercase;
+
 }
 
 #fh5co-about p {
@@ -1304,6 +1306,18 @@ input[type="text"] {
   padding-top: 30px;
 }
 
+
+.aboutfoto {
+
+display: block;
+width: 50%
+height: auto;
+size: cover;
+padding: 3% 0 3% 0;
+margin: 1% 0 1% 0;
+float: right;
+
+}
 
 .borderedpicture {
 background-color: #7d7d7d;
