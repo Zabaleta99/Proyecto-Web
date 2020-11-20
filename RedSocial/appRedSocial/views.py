@@ -56,6 +56,10 @@ def inicio(request):
 		return render(request, 'inicio.html', context)
 	return render(request, 'login.html')
 
+def post(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	context = {'post': post}
+	return render(request, 'post.html', context)
 
 def perfil(request, username):
 	usuario = get_object_or_404(Usuario, pk=username)

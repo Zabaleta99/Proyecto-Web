@@ -864,56 +864,156 @@ h1, h2, h3, h4, h5, h6, figure {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+
+.individual .blog-text {
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  float: left;
+  background: #fff;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
 @media screen and (max-width: 768px) {
   .fh5co-blog .blog-text {
     padding: 10px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .individual .blog-text {
+    padding: 10px;
+  }
+}
+
 .fh5co-blog .blog-text span {
   display: inline-block;
   margin-bottom: 20px;
   font-size: 18px !important;
   color: rgba(0, 0, 0, 0.3);
 }
+
+.individual .blog-text span {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 18px !important;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.by {
+  padding-top: 20px;
+}
+
 .fh5co-blog .blog-text .stuff {
   margin: 0;
   padding: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding-top: 20px;
 }
+
+.individual .blog-text .stuff {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+}
+
 .fh5co-blog .blog-text .stuff li {
   list-style: none;
   display: inline-block;
   margin-left: 10px;
 }
+
+.individual .blog-text .stuff li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 768px) {
   .fh5co-blog .blog-text .stuff li {
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .individual .blog-text .stuff li {
+    font-size: 14px;
+  }
+}
+
 .fh5co-blog .blog-text .stuff li:first-child {
   margin-left: 0;
 }
+
+.individual .blog-text .stuff li:first-child {
+  margin-left: 0;
+}
+
 .fh5co-blog .blog-text .stuff li:last-child {
   float: right;
 }
+
+.individual .blog-text .stuff li:last-child {
+  float: right;
+}
+
 .fh5co-blog .blog-text .stuff li:last-child a {
   color: #000;
 }
+
+.individual .blog-text .stuff li:last-child a {
+  color: #000;
+}
+
 .fh5co-blog .blog-text .stuff li:last-child i {
   padding-right: 0;
   padding-left: 10px;
 }
+
+.individual .blog-text .stuff li:last-child i {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
 .fh5co-blog .blog-text .stuff li i {
   font-size: 14px;
   padding-right: 5px;
 }
+
+.individual .blog-text .stuff li i {
+  font-size: 14px;
+  padding-right: 5px;
+}
+
 .fh5co-blog .blog-text h3 {
   font-size: 24px;
   margin-bottom: 20px;
   line-height: 1.5;
 }
+
+.individual .blog-text h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: orange;
+}
+
 .fh5co-blog .blog-text h3 a {
+  color: black;
+}
+
+.individual .blog-text h3 a {
+  color: black;
+}
+
+.individual .blog-text p {
   color: black;
 }
 
@@ -1300,6 +1400,25 @@ input[type="text"] {
   overflow: hidden;
   padding-top: 20px;
   color: orange;
+}
+
+.individual {
+  height: 500px;
+  width: 600px;
+  margin: auto;
+  background: rgba(250, 250, 250, 0.95);
+  color: orange;
+}
+
+.imagen-post {
+  display: block;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 300px;
+  padding-top: 20px;
 }
 
 .row {

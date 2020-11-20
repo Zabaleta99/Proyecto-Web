@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
+{% endblock %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+            <div id="fh5co-blog">
+              <div class="container">
+                  {% if post %}
+                  <div class="center">
+                    <div class="individual">
+                      <div class="blog-text">
+                        <span class="posted_on">{{post.fecha_publicacion}}</span>
+                        <h3>{{post.titulo}}</h3>
+                        <p>{{post.texto}}</p>
+                        {% load static %}
+                        <div class="imagen-post" style="background-image: url({% static post.foto.name %});"></div>
+                        <span class="by">by <a href="{% url 'perfil' post.autor.nombreUsuario %}">{{post.autor}}</a></span>
+                        <ul class="stuff">
+                          <li><i class="icon-heart2"></i>{{post.likes}}</li>
+                          <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  {% else %}
+                  <p>No existe el post seleccionado.</p>
+                  {% endif %}
+              </div>
+            </div>
+
+{% endblock %}
