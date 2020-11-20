@@ -37,10 +37,35 @@
                     <input type="text" name="apellidoUno" placeholder="Primer Apellido" required>
                     <input type="text" name="apellidoDos" placeholder="Segundo Apellido" required>
                     <input type="email" name="correo" placeholder="Correo Electronico" required>
-                    <input type="checkbox" name="loco"placeholder="Aficiones" required>
+                    <ul>
+                   		{% if lista_Ciudad %}
+                        <li><label>Ciudad: </label>
+                             <select name="ciudad" id="ciudad" required>
+                       			{% for ciudad in lista_Ciudad %}
+    								<option>{{ciudad.nombreCiudad}}</option>
+    							{% endfor %}
+                            </select></li>
+						{% endif %}
+                        {% if lista_EstadoCivil %}
+                        <li><label>Estado Civil: </label>
+                             <select name="estadoCivil" placeholder="Estado Civil" required>
+                                {% for estado in lista_EstadoCivil %}
+                                    <option>{{estado.nombreEstadoCivil}}</option>
+                                {% endfor %}
+                            </select></li>
+                        {% endif %}
+                        {% if lista_Aficiones %}
+                        <li><label>Aficiones: </label>
+                            <select name="aficiones" placeholder="Aficiones" multiple="multiple" required size=2>
+                                {% for estado in lista_Aficiones %}
+                                    <option>{{estado.nombreAficion}}</option>
+                                {% endfor %}
+                            </select></li>
+                        {% endif %}
+                    </ul>
                     <input type="tel" name="telefono" placeholder="Teléfono" required>
                     <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required>
-                    <input type="text" name="descripcion" placeholder="Decripción Personal" required>
+                    <input type="text" name="descripcion" placeholder="¿Cómo te defines?" required><input type="text" name="descripcionAmplia" placeholder="Describete ..." required>
                     <input type="file" name="fotoPerfil" placeholder="Foto de Perfil" required>
                     <input type="submit" value="Registrarse">
                 </form>
