@@ -45,19 +45,11 @@ class Usuario(models.Model):
  sobreMi = models.TextField(null=True, blank=True)
  email = models.EmailField(max_length = 100)
  fotoDescripcion = models.ImageField(upload_to='img/', null=True, blank=True)
+ segidos = models.ManyToManyField("self")
+ segidores = models.ManyToManyField("self")
 
  def __str__(self):
         return self.nombreUsuario
-
-
-class Seguidores(models.Model):
-	nombreUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'Seguidor')
-	seguidores = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'friends')
-
-
-class Seguidos(models.Model):
-	nombreUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'Seguido')
-	seguidos =  models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'amigos')
 
 
 class Post(models.Model):
