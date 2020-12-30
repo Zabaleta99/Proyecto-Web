@@ -24,6 +24,12 @@
 					<ul class="info">
 						<li><span class="first-block">Edad media:</span><span class="second-block">{{ aficion.edadMedia }}</span></li>
 						<li><span class="first-block">Seguidores:</span><span class="second-block">{{ aficion.estimacionSeguidores }}</span></li>
+						<p>Los usuario que comparten esta afición son los siguientes: </p>
+						{%if usuarioSeleccionado %}
+							{%for usu in usuarioSeleccionado %}
+								<li><a href="{% url 'perfil' usu.nombreUsuario %}">{{usu.nombre}} {{usu.apellidoUno}} {{usu.apellidoDos}} : {{usu.nombreUsuario}} </a></li>
+							{% endfor %}
+						{% endif %}
 					</ul>
 				</div>
 				<div class="col-md-6">

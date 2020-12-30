@@ -23,6 +23,12 @@
 			<div class="col-md-4-c">
 				<ul class="info">
 					<li><span class="first-block">Representación en la sociedad:</span><span class="second-block">{{ estadoCivil.representacion }}%</span></li>
+					<p>Los usuario que comparten este estado civil son los siguientes: </p>
+					{%if usuarioSeleccionado %}
+						{%for usu in usuarioSeleccionado %}
+							<li><a href="{% url 'perfil' usu.nombreUsuario %}">{{usu.nombre}} {{usu.apellidoUno}} {{usu.apellidoDos}} : {{usu.nombreUsuario}} </a></li>
+						{% endfor %}
+					{% endif %}
 				</ul>
 			</div>
 			<div class="col-md-8">

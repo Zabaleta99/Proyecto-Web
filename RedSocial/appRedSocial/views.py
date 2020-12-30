@@ -66,7 +66,15 @@ def inicio(request):
 		#primero se crea el usuario, y luego se le da las aficiones
 		p.aficiones.add(aficiones[0])
 		posts = Post.objects.order_by('-fecha_publicacion')
-		context = {'lista_posts': posts, 'usuario': p}
+
+		todosLosUsuarios =  get_list_or_404(Usuario.objects.all())
+		todosLosNombresUsuarios = List()
+
+		for todosUsu in todosLosUsuarios:
+			todosLosNombresUsuarios.add(todosUsu.nombreUsuario)
+
+
+		context = {'lista_posts': posts, 'usuario': p, 'todosLosNombresUsuarios' : todosLosNombresUsuarios}
 		return render(request, 'inicio.html', context)
 	return render(request, 'login.html')
 
@@ -85,15 +93,37 @@ def perfil(request, username):
 
 def ciudad(request, ciudad_id):
 	ciudad = get_object_or_404(Ciudad, pk=ciudad_id)
-	context = {'ciudad': ciudad }
+	usuarios= get_list_or_404(Usuario.objects.order_by('nombreUsuario'))
+
+	usuarioSeleccionado = list()
+	for usuario in usuarios:
+		if (usuario.ciudad.id == ciudad.id):
+			usuarioSeleccionado.append(usuario)
+
+	context = {'ciudad': ciudad, 'usuarioSeleccionado': usuarioSeleccionado}
 	return render(request, 'ciudad.html', context)
 
 def aficion(request, aficion_id):
 	aficion = get_object_or_404(Aficion, pk=aficion_id)
-	context = {'aficion': aficion }
+	usuarios= get_list_or_404(Usuario.objects.order_by('nombreUsuario'))
+
+	usuarioSeleccionado = list()
+	for usuario in usuarios:
+		for afi in usuario.aficiones.all():
+			if (afi.id == aficion.id):
+				usuarioSeleccionado.append(usuario)
+	
+	context = {'aficion': aficion, 'usuarioSeleccionado': usuarioSeleccionado }
 	return render(request, 'aficion.html', context)
 
 def estadoCivil(request, estadoCivil_id):
 	estadoCivil = get_object_or_404(EstadoCivil, pk=estadoCivil_id)
-	context = {'estadoCivil': estadoCivil }
+	usuarios= get_list_or_404(Usuario.objects.order_by('nombreUsuario'))
+
+	usuarioSeleccionado = list()
+	for usuario in usuarios:
+		if (usuario.estadoCivil.id == estadoCivil.id):
+			usuarioSeleccionado.append(usuario)
+	
+	context = {'estadoCivil': estadoCivil, 'usuarioSeleccionado': usuarioSeleccionado}
 	return render(request, 'estadoCivil.html', context)

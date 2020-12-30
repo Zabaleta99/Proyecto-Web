@@ -25,6 +25,12 @@
 						<li><span class="first-block">Provincia:</span><span class="second-block">{{ ciudad.provincia }}</span></li>
 						<li><span class="first-block">Comunidad:</span><span class="second-block">{{ ciudad.comunidad }}</span></li>
 						<li><span class="first-block">País:</span><span class="second-block">{{ ciudad.pais }}</span></li>
+						<p>Los usuario que comparten esta adición son los siguientes: </p>
+						{%if usuarioSeleccionado %}
+							{%for usu in usuarioSeleccionado %}
+								<li><a href="{% url 'perfil' usu.nombreUsuario %}">{{usu.nombre}} {{usu.apellidoUno}} {{usu.apellidoDos}} : {{usu.nombreUsuario}} </a></li>
+							{% endfor %}
+						{% endif %}
 					</ul>
 				</div>
 
