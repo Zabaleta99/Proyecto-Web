@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01 18:35+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\appRedSocial\templates\login.html:11
+msgid "Beer Meet: StartPage"
+msgstr "Beer Meet: Inicio"
+
+#: .\appRedSocial\templates\login.html:17
+msgid "Create Account"
+msgstr "Crear Cuenta"
+
+#: .\appRedSocial\templates\login.html:25
+msgid "User"
+msgstr "Usuario"
+
+#: .\appRedSocial\templates\login.html:26
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\appRedSocial\templates\login.html:27
+msgid "Log In"
+msgstr "Iniciar sesion"
+
+#: .\appRedSocial\templates\login.html:29
+msgid "The new social media to be with the best people"
+msgstr "La nueva red social para estar con la mejor gente"
+
+#: .\appRedSocial\templates\login.html:33
+#: .\appRedSocial\templates\login.html:76
+msgid "Create your account"
+msgstr "Crear tu Cuenta"

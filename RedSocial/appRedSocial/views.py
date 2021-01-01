@@ -5,6 +5,7 @@ from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil
 
 #devuelve la lista de los Usuarios registrados
 def show_login(request):
+	
 	ciudades =  get_list_or_404(Ciudad.objects.all())
 	aficiones =  get_list_or_404(Aficion.objects.all())
 	estadoCivil =  get_list_or_404(EstadoCivil.objects.all())
