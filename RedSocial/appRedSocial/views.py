@@ -3,6 +3,10 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
 from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil
 
+#varibale estatica que guarda el usuario logeado
+class variable:
+	usuarioEstatico= Usuario()
+
 #devuelve la lista de los Usuarios registrados
 def show_login(request):
 	
@@ -45,6 +49,7 @@ def inicio(request):
 			if(usu.contraseña == password):
 				usuario_logeado = Usuario.objects.get(pk=usuario)
 				posts = Post.objects.order_by('-fecha_publicacion')
+				variable.usuarioEstatico = usuario_logeado
 				context = {'lista_posts': posts, 'usuario': usuario_logeado}
 				return render(request, 'inicio.html', context)
 
@@ -66,6 +71,7 @@ def inicio(request):
 		p.save()
 		#primero se crea el usuario, y luego se le da las aficiones
 		p.aficiones.add(aficiones[0])
+		variable.usuarioEstatico = p
 		posts = Post.objects.order_by('-fecha_publicacion')
 
 		todosLosUsuarios =  get_list_or_404(Usuario.objects.all())
@@ -73,7 +79,6 @@ def inicio(request):
 
 		for todosUsu in todosLosUsuarios:
 			todosLosNombresUsuarios.add(todosUsu.nombreUsuario)
-
 
 		context = {'lista_posts': posts, 'usuario': p, 'todosLosNombresUsuarios' : todosLosNombresUsuarios}
 		return render(request, 'inicio.html', context)
@@ -88,9 +93,43 @@ def post(request, post_id):
 def perfil(request, username):
 	usuario = get_object_or_404(Usuario, pk=username)
 	aficiones = usuario.aficiones.all()
-	context = {'usuario': usuario, 'aficiones': aficiones}
+	verificador = False
+	segidos = variable.usuarioEstatico.segidos.all()
+	if (variable.usuarioEstatico.nombreUsuario == usuario.nombreUsuario):
+			verificador = True
+	for segido in segidos:
+		if (segido.nombreUsuario == usuario.nombreUsuario):
+			verificador = True
+			break
+
+	context = {'usuario': usuario, 'aficiones': aficiones, 'verificador' : verificador}
 	return render(request, 'perfil.html', context)
 
+def actualizar(request, username):
+	usuario = get_object_or_404(Usuario, pk=username)
+	usuarioLogin = variable.usuarioEstatico.segidos.all()
+	verificador = False
+	for segido in usuarioLogin:
+		if (segido.nombreUsuario == usuario.nombreUsuario):
+			#guarda los cambios en el atributo segidores del usuario
+			usuario.segidores.remove(variable.usuarioEstatico)
+			usuario.save()
+			#guarda los cambios en el atributo segidos del usuaurio de login o estatico
+			verificador = True
+			variable.usuarioEstatico.segidos.remove(segido) 
+			variable.usuarioEstatico.save()
+			break
+
+	if(verificador == False):
+		#guarda los cambios en el atributo segidores del usuario
+		usuario.segidores.add(variable.usuarioEstatico)
+		usuario.save()
+		#guarda los cambios en el atributo segidos del usuaurio de login o estatico
+		variable.usuarioEstatico.segidos.add(usuario) 
+		variable.usuarioEstatico.save()
+
+	context = {'usuario': usuario}
+	return perfil(request, username)
 
 def ciudad(request, ciudad_id):
 	ciudad = get_object_or_404(Ciudad, pk=ciudad_id)
@@ -114,7 +153,7 @@ def aficion(request, aficion_id):
 			if (afi.id == aficion.id):
 				usuarioSeleccionado.append(usuario)
 	
-	context = {'aficion': aficion, 'usuarioSeleccionado': usuarioSeleccionado }
+	context = {'aficion': aficion, 'usuarioSeleccionado': usuarioSeleccionado}
 	return render(request, 'aficion.html', context)
 
 def estadoCivil(request, estadoCivil_id):

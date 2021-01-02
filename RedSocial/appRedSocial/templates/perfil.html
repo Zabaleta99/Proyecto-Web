@@ -32,13 +32,22 @@
 											<li><a href="https://www.youtube.com/"><i class="icon-dribbble2"></i></a></li>
 										</ul>
 									</p>
+									<form action="{% url 'actualizar' usuario.nombreUsuario %}" method="post">
+										{% csrf_token %}
+										{% if verificador == True %}
+										<input type="submit" name="Dejar de segir" value="Dejar de segir">
+										{% endif %}
+										{% if verificador == False %}
+										<input type="submit" name="Segir" value="Segir">
+										{% endif %}
+									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</header>
-
+			{% if verificador == True %}
 			<div id="fh5co-about" class="animate-box">
 				<div class="container">
 					<div class="row">
@@ -81,6 +90,7 @@
 						</div>
 					</div>
 				</div>
+				{% endif %}
 			</div>
 
 	{% endif %}
