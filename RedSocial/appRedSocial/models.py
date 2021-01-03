@@ -60,6 +60,8 @@ class Post(models.Model):
  texto = models.CharField(max_length=500)
  likes = models.IntegerField(default=0)
  foto = models.ImageField(upload_to='img/',blank=True, null=True)
+ foto1 = models.ImageField(upload_to='img/',blank=True, null=True)
+ foto2 = models.ImageField(upload_to='img/',blank=True, null=True)
 
  def __str__(self):
         return self.titulo
