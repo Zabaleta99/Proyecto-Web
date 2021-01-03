@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script2.js' %}"></script>
 {% endblock %}
 
 {% block title %}Aficion{% endblock %}
@@ -33,7 +36,7 @@
 					</ul>
 				</div>
 				<div class="col-md-6">
-					<img class="borderedpicture escalaGrises" src="{% static aficion.foto.name %}" alt=""/>
+					<img class="borderedpicture" src="{% static aficion.foto.name %}" alt=""/>
 				</div>
 			</div>
 			<div class="col-md-8">
