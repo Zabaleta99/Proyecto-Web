@@ -1,5 +1,9 @@
 # Create your models here.
+import datetime
+
 from django.db import models
+from django.utils import timezone
+
 
 class EstadoCivil(models.Model):
  # No es necesario crear un campo para la Primary Key, Django creará automáticamente un IntegerField.
@@ -65,7 +69,9 @@ class Post(models.Model):
 
  def __str__(self):
         return self.titulo
-
+ def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.fecha_publicacion <= now
 
 class Comentario(models.Model):
  # No es necesario crear un campo para la Primary Key, Django creará automáticamente un IntegerField.
@@ -77,3 +83,4 @@ class Comentario(models.Model):
 
  def __str__(self):
         return self.texto
+
