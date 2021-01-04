@@ -10,6 +10,7 @@
 <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.cycle.all.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/script3.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script4.js' %}"></script>
 {% endblock %}
 
 {% block title %}Inicio{% endblock %}
@@ -37,6 +38,15 @@
                           <li><i class="icon-heart2"></i>{{post.likes}}</li>
                           <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->
                         </ul>
+                        <span><button id="verComments" class="botonCom"> Ver comentarios</button><button id="ocultarComments" class="botonCom">Ocultar comentarios</button></span>
+                        <div class="comentarios">
+                          <h4>Comentarios</h4>
+                          {% for coments in comentarios %}
+                            <ul>
+                              <li>{{ coments.texto }}</li>
+                            </ul>
+                          {% endfor %}
+                        </div>
                       </div>
                     </div>
                   </div>

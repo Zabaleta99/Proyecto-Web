@@ -1,7 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
-from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil
+from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil, Comentario
 
 #varibale estatica que guarda el usuario logeado
 class variable:
@@ -87,9 +87,15 @@ def inicio(request):
 
 def post(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
-	context = {'post': post}
-	return render(request, 'post.html', context)
+	comentarios = get_list_or_404(Comentario.objects.all())
 
+	comentsPost = []
+	for i in comentarios:
+		if (str(i.titulo) == str(post.titulo)):
+			comentsPost.append(i)
+	context = {'post': post, 'comentarios': comentsPost}
+	return render(request, 'post.html', context)
+# return HttpResponse(comentsPost)
 def perfil(request, username):
 	usuario = get_object_or_404(Usuario, pk=username)
 	aficiones = usuario.aficiones.all()

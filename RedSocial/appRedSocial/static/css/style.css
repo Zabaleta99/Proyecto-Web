@@ -1474,3 +1474,20 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: orange;
   padding-top: 15px;
 }
+
+.comentarios
+{
+  display: none;
+}
+
+.botonCom
+{
+  background-color: #808080;
+  color: white;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
