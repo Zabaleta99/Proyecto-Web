@@ -33,7 +33,11 @@
                         <p>{{post.texto|truncatewords:20}}</p>
                         <span>by <a href="{% url 'perfil' post.autor.nombreUsuario %}">{{post.autor}}</a></span>
                         <ul class="stuff">
-                          <li><i class="icon-heart2"></i>{{post.likes}}</li>
+                          <li>
+                            <form action="{% url 'like' post.id%}" >
+                              <button type="submit" class="icon-heart2" ></button>{{post.likes}}
+                            </form>
+                          </li>
                           <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->
                           <li><a href="{% url 'post' post.id %}">Read More<i class="icon-arrow-right22"></i></a></li>
                         </ul>

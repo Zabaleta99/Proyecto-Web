@@ -50,7 +50,14 @@ def inicio(request):
 				usuario_logeado = Usuario.objects.get(pk=usuario)
 				posts = Post.objects.order_by('-fecha_publicacion')
 				variable.usuarioEstatico = usuario_logeado
-				context = {'lista_posts': posts, 'usuario': usuario_logeado}
+
+				postFiltados = list();
+				for post in posts:
+					for usuario in usuariosaVerificar:
+						if post.autor ==usuario.segidos.all():
+							postFiltados.append(post)
+
+				context = {'lista_posts': postFiltados, 'usuario': usuario_logeado}
 				return render(request, 'inicio.html', context)
 
 	if correo is not False:
@@ -72,19 +79,38 @@ def inicio(request):
 		#primero se crea el usuario, y luego se le da las aficiones
 		p.aficiones.add(aficiones[0])
 		variable.usuarioEstatico = p
+
 		posts = Post.objects.order_by('-fecha_publicacion')
+		postFiltados = list();
+		for post in posts:
+			for usuario in usuariosaVerificar.segidos.all():
+				if post.autor ==usuario:
+					postFiltados.append(post)
 
-		todosLosUsuarios =  get_list_or_404(Usuario.objects.all())
-		todosLosNombresUsuarios = List()
-
-		for todosUsu in todosLosUsuarios:
-			todosLosNombresUsuarios.add(todosUsu.nombreUsuario)
-
-		context = {'lista_posts': posts, 'usuario': p, 'todosLosNombresUsuarios' : todosLosNombresUsuarios}
+		context = {'lista_posts': postFiltados, 'usuario': p}
 		return render(request, 'inicio.html', context)
 	return render(request, 'login.html')
 
+def like(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	posts = Post.objects.order_by('-fecha_publicacion')
+	like = False
 
+	for usuario in post.usuariosLike.all():
+		if(usuario == variable.usuarioEstatico):
+			post.usuariosLike.remove(usuario)
+			like = True
+			post.likes = post.likes - 1
+			post.save()
+
+	if like == False:
+		post.usuariosLike.add(variable.usuarioEstatico)
+		post.likes = post.likes + 1
+		post.save()
+
+	context = {'lista_posts': posts, 'usuario': variable.usuarioEstatico}
+	return render(request, 'inicio.html', context)
+		
 def post(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
 	comentarios = get_list_or_404(Comentario.objects.all())
@@ -95,20 +121,23 @@ def post(request, post_id):
 			comentsPost.append(i)
 	context = {'post': post, 'comentarios': comentsPost}
 	return render(request, 'post.html', context)
+
 # return HttpResponse(comentsPost)
 def perfil(request, username):
 	usuario = get_object_or_404(Usuario, pk=username)
 	aficiones = usuario.aficiones.all()
 	verificador = False
+	esPerfilPropio = False
 	segidos = variable.usuarioEstatico.segidos.all()
 	if (variable.usuarioEstatico.nombreUsuario == usuario.nombreUsuario):
 			verificador = True
+			esPerfilPropio = True
 	for segido in segidos:
 		if (segido.nombreUsuario == usuario.nombreUsuario):
 			verificador = True
 			break
 
-	context = {'usuario': usuario, 'aficiones': aficiones, 'verificador' : verificador}
+	context = {'usuario': usuario, 'aficiones': aficiones, 'verificador' : verificador, 'esPerfilPropio' : esPerfilPropio}
 	return render(request, 'perfil.html', context)
 
 def actualizar(request, username):

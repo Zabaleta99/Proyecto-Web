@@ -63,6 +63,7 @@ class Post(models.Model):
  fecha_publicacion = models.DateTimeField(auto_now_add=True)
  texto = models.CharField(max_length=500)
  likes = models.IntegerField(default=0)
+ usuariosLike = models.ManyToManyField(Usuario, related_name='likes')
  foto = models.ImageField(upload_to='img/',blank=True, null=True)
  foto1 = models.ImageField(upload_to='img/',blank=True, null=True)
  foto2 = models.ImageField(upload_to='img/',blank=True, null=True)
