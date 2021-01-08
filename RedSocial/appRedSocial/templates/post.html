@@ -41,11 +41,15 @@
                         <span><button id="verComments" class="botonCom"> Ver comentarios</button><button id="ocultarComments" class="botonCom">Ocultar comentarios</button></span>
                         <div class="comentarios">
                           <h4>Comentarios</h4>
+                          {% if comentarios %}
                           {% for coments in comentarios %}
                             <ul>
-                              <li>{{ coments.texto }}</li>
+                              <li>{{ coments.texto }} <br><p><em>By: {{ coments.nombreUsuario }}</em></p></li>
                             </ul>
                           {% endfor %}
+                          {% else %}
+                          <p>No hay comentarios en este post</p>
+                          {% endif %}
                         </div>
                       </div>
                     </div>

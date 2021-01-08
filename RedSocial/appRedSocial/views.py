@@ -53,11 +53,10 @@ def inicio(request):
 
 				postFiltados = list();
 				for post in posts:
-					for usuario in usuariosaVerificar:
-						for segido in usuario.segidos.all():
-							if post.autor == segido:
-								postFiltados.append(post)
-
+					for segido in variable.usuarioEstatico.segidos.all():
+						if post.autor == segido:
+							postFiltados.append(post)
+							
 					# el sistema tambien mostrará las publicaciones de uno mismo
 					if post.autor == variable.usuarioEstatico:
 						postFiltados.append(post)

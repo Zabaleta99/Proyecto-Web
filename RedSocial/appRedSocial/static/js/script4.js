@@ -1,4 +1,4 @@
-window.onload = function () 
+$(document).ready(function() 
 {
 	$("#verComments").click( function () 
 	{
@@ -13,4 +13,4 @@ window.onload = function ()
 		$("#ocultarComments").attr('disabled', true);
 		$(".comentarios").css("display", "none");
 	});
-}
+});

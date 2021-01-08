@@ -13,7 +13,7 @@ $.fn.qtip.styles.mystyle = { // Definir estilo que aplicaremos después
 }
 
 $(document).ready(function() {
-  //jQuery code...
+  
   $('#paisvasco').qtip(
   {
     content: 'Una comunidad autónoma es una especie de región, un estado suele tener varios.',
