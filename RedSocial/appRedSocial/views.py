@@ -9,7 +9,7 @@ class variable:
 
 #devuelve la lista de los Usuarios registrados
 def show_login(request):
-	
+
 	ciudades =  get_list_or_404(Ciudad.objects.all())
 	aficiones =  get_list_or_404(Aficion.objects.all())
 	estadoCivil =  get_list_or_404(EstadoCivil.objects.all())
@@ -40,7 +40,7 @@ def inicio(request):
 	if('aficiones' in request.POST):
 		aficionesSelecionados = request.POST['aficiones']
 		aficiones =  get_list_or_404(Aficion, nombreAficion=aficionesSelecionados)
-	
+
 	p = Usuario()
 	usuariosaVerificar = get_list_or_404(Usuario.objects.all())
 
@@ -87,7 +87,7 @@ def inicio(request):
 
 		posts = Post.objects.order_by('-fecha_publicacion')
 		postFiltados = list()
-		
+
 		for post in posts:
 			for usuario in usuariosaVerificar:
 				for segido in usuario.segidos.all():
@@ -121,7 +121,7 @@ def like(request, post_id):
 
 	context = {'lista_posts': posts, 'usuario': variable.usuarioEstatico}
 	return render(request, 'inicio.html', context)
-		
+
 def post(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
 	comentarios = get_list_or_404(Comentario.objects.all())
@@ -162,7 +162,7 @@ def actualizar(request, username):
 			usuario.save()
 			#guarda los cambios en el atributo segidos del usuaurio de login o estatico
 			verificador = True
-			variable.usuarioEstatico.segidos.remove(segido) 
+			variable.usuarioEstatico.segidos.remove(segido)
 			variable.usuarioEstatico.save()
 			break
 
@@ -171,7 +171,7 @@ def actualizar(request, username):
 		usuario.segidores.add(variable.usuarioEstatico)
 		usuario.save()
 		#guarda los cambios en el atributo segidos del usuaurio de login o estatico
-		variable.usuarioEstatico.segidos.add(usuario) 
+		variable.usuarioEstatico.segidos.add(usuario)
 		variable.usuarioEstatico.save()
 
 	context = {'usuario': usuario}
@@ -198,7 +198,7 @@ def aficion(request, aficion_id):
 		for afi in usuario.aficiones.all():
 			if (afi.id == aficion.id):
 				usuarioSeleccionado.append(usuario)
-	
+
 	context = {'aficion': aficion, 'usuarioSeleccionado': usuarioSeleccionado}
 	return render(request, 'aficion.html', context)
 
@@ -210,6 +210,12 @@ def estadoCivil(request, estadoCivil_id):
 	for usuario in usuarios:
 		if (usuario.estadoCivil.id == estadoCivil.id):
 			usuarioSeleccionado.append(usuario)
-	
+
 	context = {'estadoCivil': estadoCivil, 'usuarioSeleccionado': usuarioSeleccionado}
 	return render(request, 'estadoCivil.html', context)
+
+def usuarios(request, username):
+	usuarioLogin = get_object_or_404(Usuario, pk=username)
+	usuarios = get_list_or_404(Usuario.objects.all())
+	context = {'usuarioLogin': usuarioLogin, 'usuarios': usuarios}
+	return render(request, 'usuarios.html', context)

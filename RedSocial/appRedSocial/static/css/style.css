@@ -1411,9 +1411,9 @@ input[type="text"] {
 }
 
 .imagen-post {
-  height:  332px;  
+  height:  332px;
   width: 100%;
-  padding: 0;  
+  padding: 0;
   margin:  0;
   display: block;
   text-align: center;
@@ -1428,11 +1428,11 @@ input[type="text"] {
 }
 
 .imagen-post img {
-  padding: 15px;  
-  border:  7px solid #404040;  
-  background-color: #eee;  
-  width:  100%; 
-  height: 100%; 
+  padding: 15px;
+  border:  7px solid #404040;
+  background-color: #eee;
+  width:  100%;
+  height: 100%;
   margin: auto;
 }
 
@@ -1490,4 +1490,14 @@ button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+.cm {
+  padding: 15px;
+  width: 100%;
+}
+
+.usuarios {
+  background: rgba(250, 250, 250, 0.95);
+  padding: 15px;
 }

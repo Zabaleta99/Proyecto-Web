@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
+
+{% endblock %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+            <div id="fh5co-blog">
+              <div class="container">
+                <div class="bloque-titulo">
+                  <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2 class="a"><a href="{% url 'perfil' usuarioLogin.nombreUsuario %}">{{usuarioLogin.nombreUsuario}}</a></h2>
+                    <p>Here are the different users of Beer Meet.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  {% if usuarios %}
+                  {% for usuario in usuarios %}
+                  {% if usuario.nombreUsuario != usuarioLogin.nombreUsuario %}
+                  <div class="cm">
+                    <div class="usuarios">
+                      <h3><a href="{% url 'perfil' usuario.nombreUsuario %}">{{usuario.nombreUsuario}}</a></h3>
+                    </div>
+                  </div>
+                  {% else %}
+                  {% endif %}
+                  {% endfor %}
+                  {% else %}
+                  <p>No hay usuarios.</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+{% endblock %}
