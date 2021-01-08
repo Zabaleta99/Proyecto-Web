@@ -36,10 +36,10 @@
 										<form action="{% url 'actualizar' usuario.nombreUsuario %}" method="post">
 											{% csrf_token %}
 											{% if verificador == True %}
-											<input type="submit" name="Dejar de segir" value="Dejar de segir">
+											<input type="submit" name="Dejar de seguir" value="Dejar de seguir">
 											{% endif %}
 											{% if verificador == False %}
-											<input type="submit" name="Segir" value="Segir">
+											<input type="submit" name="Seguir" value="Seguir">
 											{% endif %}
 										</form>
 									{% endif %}

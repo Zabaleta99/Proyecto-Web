@@ -54,8 +54,13 @@ def inicio(request):
 				postFiltados = list();
 				for post in posts:
 					for usuario in usuariosaVerificar:
-						if post.autor ==usuario.segidos.all():
-							postFiltados.append(post)
+						for segido in usuario.segidos.all():
+							if post.autor == segido:
+								postFiltados.append(post)
+
+					# el sistema tambien mostrará las publicaciones de uno mismo
+					if post.autor == variable.usuarioEstatico:
+						postFiltados.append(post)
 
 				context = {'lista_posts': postFiltados, 'usuario': usuario_logeado}
 				return render(request, 'inicio.html', context)
@@ -81,11 +86,17 @@ def inicio(request):
 		variable.usuarioEstatico = p
 
 		posts = Post.objects.order_by('-fecha_publicacion')
-		postFiltados = list();
+		postFiltados = list()
+		
 		for post in posts:
-			for usuario in usuariosaVerificar.segidos.all():
-				if post.autor ==usuario:
-					postFiltados.append(post)
+			for usuario in usuariosaVerificar:
+				for segido in usuario.segidos.all():
+					if post.autor == segido:
+						postFiltados.append(post)
+
+			# el sistema tambien mostrará las publicaciones de uno mismo
+			if post.autor == variable.usuarioEstatico:
+				postFiltados.append(post)
 
 		context = {'lista_posts': postFiltados, 'usuario': p}
 		return render(request, 'inicio.html', context)
