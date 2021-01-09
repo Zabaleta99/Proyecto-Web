@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
 
-<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.qtip-1.0.0-rc3.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script1.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script2.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.qtip-1.0.0-rc3.min.js' %}"></script>
+<script src="{% static 'js/script1.js' %}"></script>
+<script src="{% static 'js/script2.js' %}"></script>
 {% endblock %}
 
 {% block title %}Ciudad{% endblock %}
@@ -30,7 +30,7 @@
 						<li><span class="first-block">Provincia:</span><span class="second-block">{{ ciudad.provincia }}</span></li>
 						<li><span id="paisvasco" class="first-block">Comunidad:</span><span class="second-block">{{ ciudad.comunidad }}</span></li>
 						<li><span class="first-block">País:</span><span class="second-block">{{ ciudad.pais }}</span></li>
-						<p>Los usuario que comparten esta adición son los siguientes: </p>
+						<li><p>Los usuarios que comparten esta característica son los siguientes: </p></li>
 						{%if usuarioSeleccionado %}
 							{%for usu in usuarioSeleccionado %}
 								<li><a href="{% url 'perfil' usu.nombreUsuario %}">{{usu.nombre}} {{usu.apellidoUno}} {{usu.apellidoDos}} : {{usu.nombreUsuario}} </a></li>

@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
 
-<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.cycle.all.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script3.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script4.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.cycle.all.min.js' %}"></script>
+<script src="{% static 'js/script3.js' %}"></script>
+<script src="{% static 'js/script4.js' %}"></script>
 {% endblock %}
 
 {% block title %}Inicio{% endblock %}
@@ -27,9 +27,9 @@
                         <p>{{post.texto}}</p>
                         {% load static %}
                         <div class="imagen-post">
-                          <img src="{% static post.foto.name %}" width="100" height="100"/>
-                          <img src="{% static post.foto1.name %}" width="100" height="100"/>
-                          <img src="{% static post.foto2.name %}" width="100" height="100"/>
+                          <img src="{% static post.foto.name %}" alt= "Foto1" width="100" height="100"/>
+                          <img src="{% static post.foto1.name %}" alt= "Foto2" width="100" height="100"/>
+                          <img src="{% static post.foto2.name %}" alt= "Foto3" width="100" height="100"/>
                         </div>
                         <!-- <div class="imagen-post" style="background-image: url({% static post.foto1.name %});"></div>
                         <div class="imagen-post" style="background-image: url({% static post.foto2.name %});"></div> -->

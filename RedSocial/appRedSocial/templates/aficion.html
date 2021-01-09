@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
 
-<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script2.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/script2.js' %}"></script>
 {% endblock %}
 
 {% block title %}Aficion{% endblock %}
@@ -27,7 +27,7 @@
 					<ul class="info">
 						<li><span class="first-block">Edad media:</span><span class="second-block">{{ aficion.edadMedia }}{{usuarioEstatico.nombreUsuario}}</span></li>
 						<li><span class="first-block">Seguidores:</span><span class="second-block">{{ aficion.estimacionSeguidores }}</span></li>
-						<p>Los usuario que comparten esta afición son los siguientes: </p>
+						<li><p>Los usuarios que comparten esta afición son los siguientes: </p></li>
 						{%if usuarioSeleccionado %}
 							{%for usu in usuarioSeleccionado %}
 								<li><a href="{% url 'perfil' usu.nombreUsuario %}">{{usu.nombre}} {{usu.apellidoUno}} {{usu.apellidoDos}} : {{usu.nombreUsuario}} </a></li>
