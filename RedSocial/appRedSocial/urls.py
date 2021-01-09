@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url
 
 urlpatterns = [
  path('', views.show_login, name='login'),
@@ -11,4 +12,5 @@ urlpatterns = [
  path('ciudad/<int:ciudad_id>/', views.ciudad, name='ciudad'),
  path('aficion/<int:aficion_id>/', views.aficion, name='aficion'),
  path('estadoCivil/<int:estadoCivil_id>/', views.estadoCivil, name='estadoCivil'),
- path('<slug:username>/usuarios', views.usuarios, name='usuarios'),]
+ path('<slug:username>/usuarios', views.usuarios, name='usuarios'),
+ url(r'^/search$',views.search,name='search')]

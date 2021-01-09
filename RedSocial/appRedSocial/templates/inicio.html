@@ -7,6 +7,20 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
 
+% extends "base.html" %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/imagenFondoCiudad.css' %}">
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 {% endblock %}
 
 {% block title %}Inicio{% endblock %}
@@ -21,6 +35,17 @@
                   </div>
                 </div>
                 <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <form  method="GET" action="{% url 'search' %}" id="buscador">
+                          <input name="texto"  type="text" placeholder="Search Usuario..." >
+                          <input type="submit" name="Busar"  value="Buscar">
+                        </form>    
+                      </div>
+                    </div>
+                    <div class="col-md-6" id="resultado">
+                    </div>
+                  </div>
                   {% if lista_posts %}
                   {% for post in lista_posts %}
                   <div class="col-md-4">
@@ -33,11 +58,7 @@
                         <p>{{post.texto|truncatewords:20}}</p>
                         <span>by <a href="{% url 'perfil' post.autor.nombreUsuario %}">{{post.autor}}</a></span>
                         <ul class="stuff">
-                          <li>
-                            <form action="{% url 'like' post.id%}" >
-                              <button type="submit" class="icon-heart2" ></button>{{post.likes}}
-                            </form>
-                          </li>
+                          <li><i class="icon-heart2"></i>{{post.likes}}</li>
                           <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->
                           <li><a href="{% url 'post' post.id %}">Read More<i class="icon-arrow-right22"></i></a></li>
                         </ul>
@@ -45,7 +66,6 @@
                     </div>
                   </div>
                   {% endfor %}
-                  <div class="col-md-4"><div class="usuarios"><a href="{% url 'usuarios' usuario.nombreUsuario %}">Usuarios</a></div></div>
                   {% else %}
                   <p>No hay posts recientes.</p>
                   {% endif %}
@@ -53,3 +73,4 @@
               </div>
             </div>
 {% endblock %}
+

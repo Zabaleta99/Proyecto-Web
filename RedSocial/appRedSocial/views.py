@@ -1,7 +1,9 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
+from django.core import serializers
 from .models import Aficion, Usuario, Post, Ciudad, EstadoCivil, Comentario
+import json
 
 #varibale estatica que guarda el usuario logeado
 class variable:
@@ -218,3 +220,14 @@ def usuarios(request, username):
 	usuarios = get_list_or_404(Usuario.objects.all())
 	context = {'usuarioLogin': usuarioLogin, 'usuarios': usuarios}
 	return render(request, 'usuarios.html', context)
+
+
+def search(request):
+    q = request.GET.get('texto')
+    results = Usuario.objects.filter(nombreUsuario__startswith = q)  
+    results = [results_serializer(result) for result in results]        
+    return HttpResponse(json.dumps(results), content_type='application/json')
+
+def results_serializer(result):
+
+	return({'id': result.nombreUsuario,'nombre':result.nombre,'apellidoUno':result.apellidoUno})
