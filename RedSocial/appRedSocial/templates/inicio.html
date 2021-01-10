@@ -50,7 +50,10 @@
                         <p>{{post.texto|truncatewords:20}}</p>
                         <span>by <a href="{% url 'perfil' post.autor.nombreUsuario %}">{{post.autor}}</a></span>
                         <ul class="stuff">
-                          <li><i class="icon-heart2"></i>{{post.likes}}</li>
+                          <form action="{% url 'like' post.id %}">
+                            <button type="submit" class="icon-heart2">{{post.likes}}</button>
+                          </form>
+                          
                           <!--Pendiente crear visualizaciones!<li><i class="icon-eye2"></i>308</li>-->
                           <li><a href="{% url 'post' post.id %}">Read More<i class="icon-arrow-right22"></i></a></li>
                         </ul>
@@ -61,6 +64,12 @@
                   {% else %}
                   <p>No hay posts recientes.</p>
                   {% endif %}
+                </div>
+                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <form action="{% url 'usuarios' usuario.nombreUsuario %}">
+                      <button type="submit">Visualizar todo los Usuarios</button>
+                    </form>
+                  </div>
                 </div>
               </div>
 {% endblock %}

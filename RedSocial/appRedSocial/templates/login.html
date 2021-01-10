@@ -11,7 +11,7 @@
 {% block title %}{% trans "Beer Meet: StartPage" %}{% endblock %}
 
 {% block content %}
-	<div id="tm-bg">
+	<div>
         <div>
                 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                     <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -33,7 +33,7 @@
                 <span>{% trans "Create Account" %}</span>
             </div>
             <div class="formulario">
-                <h1><img src="{% static 'img/Wallpaper.png' %}"></h1>
+                <h1> <img src="{% static 'img/Wallpaper.png' %}" alt ="icono de la web BeerMeet"></h1>
                 <h1>Beer Meet</h1>
                 <form action="{% url 'inicio' %}" method="post">
 	               {% csrf_token %}
@@ -58,23 +58,23 @@
                     <ul>
                    		{% if lista_Ciudad %}
                         <li><label>City: </label>
-                             <select name="ciudad" id="ciudad" required>
+                             <select name="ciudad" id="ciudad" required size=1>
                        			{% for ciudad in lista_Ciudad %}
-    								<option>{{ciudad.nombreCiudad}}</option>
+    								<option value="">{{ciudad.nombreCiudad}}</option>
     							{% endfor %}
                             </select></li>
 						{% endif %}
                         {% if lista_EstadoCivil %}
                         <li><label>Civil State: </label>
-                             <select name="estadoCivil" placeholder="Civil State" required>
+                             <select name="estadoCivil" required size=1>
                                 {% for estado in lista_EstadoCivil %}
-                                    <option>{{estado.nombreEstadoCivil}}</option>
+                                    <option value = "">{{estado.nombreEstadoCivil}}</option>
                                 {% endfor %}
                             </select></li>
                         {% endif %}
                         {% if lista_Aficiones %}
                         <li><label>Afitions: </label>
-                            <select name="aficiones" placeholder="Afitions" multiple="multiple" required size=2>
+                            <select name="aficiones"  multiple="multiple" required size=2>
                                 {% for estado in lista_Aficiones %}
                                     <option>{{estado.nombreAficion}}</option>
                                 {% endfor %}
@@ -82,9 +82,9 @@
                         {% endif %}
                     </ul>
                     <input type="tel" name="telefono" placeholder="Phone" required>
-                    <input type="date" name="fecha_nacimiento" placeholder="Date of birth" required>
+                    <input type="date" name="fecha_nacimiento" required>
                     <input type="text" name="descripcion" placeholder="¿How do you describe yourself?" required><input type="text" name="descripcionAmplia" placeholder="Describe yourself..." required>
-                    <input type="file" name="fotoPerfil" placeholder="Profile picture" required>
+                    <input type="file" name="fotoPerfil" required>
                     <input type="submit" value="Create account">
                 </form>
             </div>
